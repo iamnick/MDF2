@@ -10,6 +10,8 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import "CustomCell.h"
+#import "TweetDetailsView.h"
+#import "UserDetailsView.h"
 
 @interface ViewController ()
 
@@ -128,8 +130,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	TweetDetailsView *tweetDetailsView = [[TweetDetailsView alloc] initWithNibName:@"TweetDetailsView" bundle:nil];
+    [tweetDetailsView setTweet:[userTimeline objectAtIndex:indexPath.row]];
+    [self presentViewController:tweetDetailsView animated:true completion:^(){}];
 }
-
 
 @end

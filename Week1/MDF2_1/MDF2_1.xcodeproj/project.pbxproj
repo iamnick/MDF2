@@ -22,6 +22,10 @@
 		827F05A4178F5C6A00566012 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827F05A3178F5C6A00566012 /* Social.framework */; };
 		827F05A7178FBCDE00566012 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 827F05A6178FBCDE00566012 /* CustomCell.m */; };
 		827F05A9178FBD0C00566012 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827F05A8178FBD0C00566012 /* CustomCell.xib */; };
+		827F05AD17908D8700566012 /* TweetDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 827F05AB17908D8700566012 /* TweetDetailsView.m */; };
+		827F05AE17908D8700566012 /* TweetDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827F05AC17908D8700566012 /* TweetDetailsView.xib */; };
+		827F05B217908DA200566012 /* UserDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 827F05B017908DA200566012 /* UserDetailsView.m */; };
+		827F05B317908DA200566012 /* UserDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827F05B117908DA200566012 /* UserDetailsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,9 +47,15 @@
 		827F059A178F508400566012 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		827F05A1178F51C900566012 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		827F05A3178F5C6A00566012 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		827F05A5178FBCDE00566012 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
-		827F05A6178FBCDE00566012 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
-		827F05A8178FBD0C00566012 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		827F05A5178FBCDE00566012 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCell.h; path = ../CustomCell.h; sourceTree = "<group>"; };
+		827F05A6178FBCDE00566012 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCell.m; path = ../CustomCell.m; sourceTree = "<group>"; };
+		827F05A8178FBD0C00566012 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCell.xib; path = ../CustomCell.xib; sourceTree = "<group>"; };
+		827F05AA17908D8700566012 /* TweetDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TweetDetailsView.h; path = ../TweetDetailsView.h; sourceTree = "<group>"; };
+		827F05AB17908D8700566012 /* TweetDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TweetDetailsView.m; path = ../TweetDetailsView.m; sourceTree = "<group>"; };
+		827F05AC17908D8700566012 /* TweetDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TweetDetailsView.xib; path = ../TweetDetailsView.xib; sourceTree = "<group>"; };
+		827F05AF17908DA200566012 /* UserDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDetailsView.h; path = ../UserDetailsView.h; sourceTree = "<group>"; };
+		827F05B017908DA200566012 /* UserDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserDetailsView.m; path = ../UserDetailsView.m; sourceTree = "<group>"; };
+		827F05B117908DA200566012 /* UserDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserDetailsView.xib; path = ../UserDetailsView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +77,6 @@
 		827F0572178F508400566012 = {
 			isa = PBXGroup;
 			children = (
-				827F05A8178FBD0C00566012 /* CustomCell.xib */,
-				827F05A5178FBCDE00566012 /* CustomCell.h */,
-				827F05A6178FBCDE00566012 /* CustomCell.m */,
 				827F0584178F508400566012 /* MDF2_1 */,
 				827F057D178F508400566012 /* Frameworks */,
 				827F057C178F508400566012 /* Products */,
@@ -99,6 +106,15 @@
 		827F0584178F508400566012 /* MDF2_1 */ = {
 			isa = PBXGroup;
 			children = (
+				827F05AF17908DA200566012 /* UserDetailsView.h */,
+				827F05B017908DA200566012 /* UserDetailsView.m */,
+				827F05B117908DA200566012 /* UserDetailsView.xib */,
+				827F05AA17908D8700566012 /* TweetDetailsView.h */,
+				827F05AB17908D8700566012 /* TweetDetailsView.m */,
+				827F05AC17908D8700566012 /* TweetDetailsView.xib */,
+				827F05A8178FBD0C00566012 /* CustomCell.xib */,
+				827F05A5178FBCDE00566012 /* CustomCell.h */,
+				827F05A6178FBCDE00566012 /* CustomCell.m */,
 				827F058D178F508400566012 /* AppDelegate.h */,
 				827F058E178F508400566012 /* AppDelegate.m */,
 				827F0596178F508400566012 /* ViewController.h */,
@@ -180,6 +196,8 @@
 				827F0595178F508400566012 /* Default-568h@2x.png in Resources */,
 				827F059B178F508400566012 /* ViewController.xib in Resources */,
 				827F05A9178FBD0C00566012 /* CustomCell.xib in Resources */,
+				827F05AE17908D8700566012 /* TweetDetailsView.xib in Resources */,
+				827F05B317908DA200566012 /* UserDetailsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +212,8 @@
 				827F058F178F508400566012 /* AppDelegate.m in Sources */,
 				827F0598178F508400566012 /* ViewController.m in Sources */,
 				827F05A7178FBCDE00566012 /* CustomCell.m in Sources */,
+				827F05AD17908D8700566012 /* TweetDetailsView.m in Sources */,
+				827F05B217908DA200566012 /* UserDetailsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
