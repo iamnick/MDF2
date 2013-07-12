@@ -31,6 +31,10 @@
 // Refresh TableView With User Timeline
 -(void)refreshTableView
 {
+	// Alert View During Load/Refresh
+    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading" message:@"Please wait while your Twitter feed is loaded." delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    [loadingAlert show];
+
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error){
@@ -38,6 +42,8 @@
         	NSArray *twitterAccounts = [accountStore accountsWithAccountType:accountType];
             NSLog(@"Access granted");
             ACAccount *currentAccount = [twitterAccounts objectAtIndex:0];
+            
+            
             
             // Get User Timeline
             NSString *userTimelineURL = @"https://api.twitter.com/1.1/statuses/user_timeline.json";
@@ -51,7 +57,7 @@
                     	userTimeline = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                         if (userTimeline != nil) {
                         	[tableView reloadData];
-                            NSLog(@"%@", [userTimeline description]);
+                            [loadingAlert dismissWithClickedButtonIndex:0 animated:YES];                            NSLog(@"%@", [userTimeline description]);
                         	NSLog(@"name: %@", [[userTimeline objectAtIndex:0] objectForKey:@"text"]);
                         }
                     }
