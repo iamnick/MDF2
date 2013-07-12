@@ -34,7 +34,12 @@
 -(void)refreshTableView
 {
 	// Alert View During Load/Refresh
-    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading" message:@"Please wait while your Twitter feed is loaded." delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading Twitter Feed" message:@"\n"  delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]
+                initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	activityIndicator.frame=CGRectMake(125, 60, 32, 32);
+	[loadingAlert addSubview:activityIndicator];
+    [activityIndicator startAnimating];
     [loadingAlert show];
 
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
@@ -72,13 +77,24 @@
 }
 
 // Post Tweet 
--(IBAction)onPost:(id)sender
+-(IBAction)onClick:(id)sender
 {
-	SLComposeViewController *slComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    if (slComposeViewController) {
-    	[slComposeViewController setInitialText:@"Posted from my test app"];
-        [self presentViewController:slComposeViewController animated:true completion:nil];
-    }
+	UIButton *button = (UIButton*)sender;
+    if (button.tag == 0) {
+    	// Refresh Button
+        [self refreshTableView];
+    } else if (button.tag == 1) {
+    	// Post Button
+        SLComposeViewController *slComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    	if (slComposeViewController) {
+    		[slComposeViewController setInitialText:@"Posted from my test app"];
+        	[self presentViewController:slComposeViewController animated:true completion:nil];
+    	}
+    } else if (button.tag == 2) {
+    	// User Details Button
+		UserDetailsView *userDetailsView = [[UserDetailsView alloc] initWithNibName:@"UserDetailsView" bundle:nil];
+    	[userDetailsView setUser:[[userTimeline objectAtIndex:0] objectForKey:@"user"]];
+    [self presentViewController:userDetailsView animated:true completion:^(){}];    }
 }
 
 - (void)didReceiveMemoryWarning

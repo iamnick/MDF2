@@ -15,6 +15,6 @@
 }
 
 -(void)refreshTableView;
--(IBAction)onPost:(id)sender;
+-(IBAction)onClick:(id)sender;
 
 @end
