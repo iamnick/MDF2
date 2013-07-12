@@ -19,6 +19,7 @@
 		827F0598178F508400566012 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 827F0597178F508400566012 /* ViewController.m */; };
 		827F059B178F508400566012 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827F0599178F508400566012 /* ViewController.xib */; };
 		827F05A2178F51C900566012 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827F05A1178F51C900566012 /* Accounts.framework */; };
+		827F05A4178F5C6A00566012 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827F05A3178F5C6A00566012 /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		827F0597178F508400566012 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		827F059A178F508400566012 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		827F05A1178F51C900566012 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		827F05A3178F5C6A00566012 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				827F05A4178F5C6A00566012 /* Social.framework in Frameworks */,
 				827F05A2178F51C900566012 /* Accounts.framework in Frameworks */,
 				827F057F178F508400566012 /* UIKit.framework in Frameworks */,
 				827F0581178F508400566012 /* Foundation.framework in Frameworks */,
@@ -76,6 +79,7 @@
 		827F057D178F508400566012 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				827F05A3178F5C6A00566012 /* Social.framework */,
 				827F05A1178F51C900566012 /* Accounts.framework */,
 				827F057E178F508400566012 /* UIKit.framework */,
 				827F0580178F508400566012 /* Foundation.framework */,
