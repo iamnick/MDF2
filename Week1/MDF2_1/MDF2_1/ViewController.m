@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import "CustomCell.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,18 @@
 @implementation ViewController
 
 - (void)viewDidLoad
+{
+	
+    
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self refreshTableView];
+}
+
+
+// Refresh TableView With User Timeline
+-(void)refreshTableView
 {
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -35,8 +48,12 @@
                 	// Check for 200 response code so we know we are getting data
                     NSInteger responseCode = [urlResponse statusCode];
                     if (responseCode == 200) {
-                    	NSArray *twitterFeed = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-                        NSLog(@"%@", [twitterFeed description]);
+                    	userTimeline = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+                        if (userTimeline != nil) {
+                        	[tableView reloadData];
+                            NSLog(@"%@", [userTimeline description]);
+                        	NSLog(@"name: %@", [[userTimeline objectAtIndex:0] objectForKey:@"text"]);
+                        }
                     }
                 }];
             }
@@ -44,11 +61,9 @@
         	NSLog(@"User did not grant access");
         }
     }];
-    
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
+// Post Tweet 
 -(IBAction)onPost:(id)sender
 {
 	SLComposeViewController *slComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
@@ -63,5 +78,52 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+// Table View Configuration
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	if (userTimeline != nil){
+		return [userTimeline count];
+    }
+    return 0;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView2 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	static NSString *CellIdentifier = @"Cell";
+	
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+        NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
+        cell = [views objectAtIndex:0];
+    }
+    
+    if (userTimeline) {
+    	NSDictionary *tweetDictionary = [userTimeline objectAtIndex:indexPath.row];
+        
+    	// User Profile Image
+        NSString *imgURL = [[NSString alloc] initWithString:[[tweetDictionary objectForKey:@"user"] objectForKey:@"profile_image_url"]];
+        UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imgURL]]];
+    	UIImageView *cellImageView = (UIImageView*)[cell viewWithTag:0];
+    	[cellImageView setImage:image];
+        
+        // Tweet Text
+        UILabel *tweetTextLabel = (UILabel*)[cell viewWithTag:1];
+        tweetTextLabel.text = [tweetDictionary objectForKey:@"text"];
+        
+        // Tweet Time
+        UILabel *tweetTimeLabel = (UILabel*)[cell viewWithTag:2];
+        tweetTimeLabel.text = [tweetDictionary objectForKey:@"created_at"];
+        
+        
+    }
+	return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
+
 
 @end
